@@ -1,0 +1,159 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Landing Page Content Schema",
+  "type": "object",
+  "required": ["title", "subtitle", "primaryCta"],
+  "properties": {
+    "eyebrow": {
+      "type": "string",
+      "description": "Small text above the main title",
+      "maxLength": 50
+    },
+    "title": {
+      "type": "string",
+      "description": "Main headline of the landing page",
+      "maxLength": 100
+    },
+    "subtitle": {
+      "type": "string",
+      "description": "Supporting text under the title",
+      "maxLength": 200
+    },
+    "primaryCta": {
+      "type": "object",
+      "required": ["label", "href"],
+      "properties": {
+        "label": {
+          "type": "string",
+          "maxLength": 30
+        },
+        "href": {
+          "type": "string",
+          "format": "uri"
+        }
+      }
+    },
+    "secondaryCta": {
+      "type": "object",
+      "properties": {
+        "label": {
+          "type": "string",
+          "maxLength": 30
+        },
+        "href": {
+          "type": "string",
+          "format": "uri"
+        }
+      }
+    },
+    "badges": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "maxLength": 20
+      },
+      "maxItems": 5
+    },
+    "heroImage": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL to the hero image"
+    },
+    "logos": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "maxItems": 8,
+      "description": "Array of logo URLs for social proof"
+    },
+    "features": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["title", "description"],
+        "properties": {
+          "title": {
+            "type": "string",
+            "maxLength": 50
+          },
+          "description": {
+            "type": "string",
+            "maxLength": 150
+          },
+          "icon": {
+            "type": "string",
+            "enum": [
+              "magic", "bolt", "shield", "star", "heart", "check",
+              "arrow-right", "zap", "globe", "lock", "rocket", "sparkles"
+            ]
+          }
+        }
+      },
+      "minItems": 3,
+      "maxItems": 6
+    },
+    "cta": {
+      "type": "object",
+      "description": "Bottom call-to-action section",
+      "properties": {
+        "title": {
+          "type": "string",
+          "maxLength": 60
+        },
+        "subtitle": {
+          "type": "string",
+          "maxLength": 120
+        },
+        "button": {
+          "type": "object",
+          "required": ["label", "href"],
+          "properties": {
+            "label": {
+              "type": "string",
+              "maxLength": 30
+            },
+            "href": {
+              "type": "string",
+              "format": "uri"
+            }
+          }
+        }
+      }
+    },
+    "theme": {
+      "type": "string",
+      "enum": ["dark-glossy", "light-clean", "neon-gradient"],
+      "default": "dark-glossy"
+    },
+    "metadata": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "maxLength": 60
+        },
+        "description": {
+          "type": "string",
+          "maxLength": 160
+        },
+        "keywords": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "maxItems": 10
+        },
+        "ogImage": {
+          "type": "string",
+          "format": "uri"
+        },
+        "twitterCard": {
+          "type": "string",
+          "enum": ["summary", "summary_large_image"]
+        }
+      }
+    }
+  }
+}
